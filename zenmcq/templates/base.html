@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="dark remember-theme">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenMCQ</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="ZenMCQ - A social media-like platform for MCQs">
+    <meta name="author" content="Bhushan Malekar">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ZenMCQ">
+    <meta property="og:description" content="A platform for sharing and solving MCQs">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="{% static 'media/favicons/favicon.png' %}">
+
+    <!-- Favicon Icons -->
+    <link rel="shortcut icon" href="{% static 'media/favicons/favicon.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'media/favicons/favicon-192x192.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'media/favicons/apple-touch-icon-180x180.png' %}">
+
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" id="css-main" href="{% static 'css/dashmix.min.css' %}">
+
+    <!-- Additional Plugins -->
+    <link rel="stylesheet" href="{% static 'js/plugins/magnific-popup/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'js/plugins/highlightjs/styles/atom-one-dark.css' %}">
+
+    <!-- Custom Dark Mode and Theme Configuration -->
+    <script src="{% static 'js/setTheme.js' %}"></script>
+</head>
+<body>
+
+
+    <!-- Main Content Block -->
+ 
+    {% block content %}
+        <!-- Content will be inserted here -->
+    {% endblock %}
+  
+
+    <footer>
+        <p>&copy; 2024 ZenMCQ. All rights reserved.</p>
+    </footer>
+
+    <!-- Include JS Plugins and Bootstrap -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/dashmix.app.min.js' %}"></script>
+</body>
+</html>
