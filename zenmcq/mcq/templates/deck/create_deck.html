@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block content %}
+
+<div id="page-container"
+    class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+
+    <main id="main-container">
+        <!-- Hero -->
+        <div class="bg-body-light">
+            <div class="content content-full">
+                <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
+                    <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Form Elements</h1>
+                    <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">Forms</li>
+                            <li class="breadcrumb-item active" aria-current="page">Elements</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- END Hero -->
+
+        <!-- Page Content -->
+        <div class="content">
+            <!-- Elements -->
+            <div class="block block-rounded">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">Add Deck</h3>
+                </div>
+                <div class="block-content">
+                    <form method="POST">
+                        
+                        <div class="row push">
+                            
+                            <div class="col-lg-8 col-xl-5">
+                                
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    <div class="mb-4">
+                                        <label class="form-label" for="example-text-input">{{ field.label}}</label>
+                                        {{ field|add_attrs:"class=form-control" }}
+                                    </div>
+                                {% endfor %}
+                                
+                            </div>
+                            <div >
+                                <button type="submit" class="btn btn-secondary">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- END Elements -->
+        </div>
+        <!-- END Page Content -->
+    </main>
+    <!-- END Main Container -->
+</div>
+<!-- END Page Container -->
+
+<!--
+    Dashmix JS
+
+    Core libraries and functionality
+    webpack is putting everything together at assets/_js/main/app.js
+  -->
+<script src="assets/js/dashmix.app.min.js"></script>
+
+{% endblock %}

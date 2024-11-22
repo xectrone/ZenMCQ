@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Decks</title>
+</head>
+<body>
+    <h1>All Decks and MCQs</h1>
+    {% for deck in decks %}
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
+            <h2>{{ deck.name }}</h2>
+            <p><strong>Description:</strong> {{ deck.description }}</p>
+            <p><strong>Tags:</strong> {{ deck.tags|join:", " }}</p>
+            <p><strong>Rating:</strong> {{ deck.rating }} ({{ deck.rating_count }} ratings)</p>
+            <p><strong>Views:</strong> {{ deck.views }}</p>
+            <p><strong>Saved Count:</strong> {{ deck.saved_count }}</p>
+            <p><strong>Owner:</strong> {{ deck.owner.username }}</p>
+            <p><strong>Created At:</strong> {{ deck.created_at }}</p>
+            <h3>MCQs in this Deck:</h3>
+            <ul>
+                {% for mcq in deck.mcqs.all %}
+                    <li>
+                        <strong>Question:</strong> {{ mcq.question_text }}<br>
+                        <strong>Options:</strong> {{ mcq.options|join:", " }}<br>
+                        <strong>Is Multiselect :</strong> {{ mcq.is_multiselect }}<br>
+                        <strong>Correct Answers:</strong> {{ mcq.correct_answers|join:", " }}<br>
+                        <strong>Explanation:</strong> {{ mcq.explanation|default:"No explanation provided." }}
+                    </li>
+                {% empty %}
+                    <p>No MCQs found in this deck.</p>
+                {% endfor %}
+            </ul>
+        </div>
+    {% empty %}
+        <p>No decks available.</p>
+    {% endfor %}
+</body>
+</html>

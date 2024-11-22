@@ -30,6 +30,30 @@
 
     <!-- Custom Dark Mode and Theme Configuration -->
     <script src="{% static 'js/setTheme.js' %}"></script>
+    <script src="{% static 'js/dynamicListManagement.js' %}"></script>
+
+    <style>
+        .list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+    
+        .list-item span {
+            flex: 1;
+        }
+    
+        .remove-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 2px 5px;
+            margin-left: 5px;
+            border-radius: 3px;
+        }
+    </style>
+
 </head>
 <body>
 

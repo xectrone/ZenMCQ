@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ deck.name }}</h2>
+    <p>{{ deck.description }}</p>
+    <p><strong>Tags:</strong> {{ deck.tags|join:", " }}</p>
+    <a href="{% url 'add_mcq' deck.id %}" class="btn btn-secondary">Add MCQ</a>
+    <hr>
+    <h3>MCQs</h3>
+    <ul>
+        {% for mcq in mcqs %}
+        <li>{{ mcq.question_text }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

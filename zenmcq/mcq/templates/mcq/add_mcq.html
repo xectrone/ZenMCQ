@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block content %}
+
+<div id="page-container"
+    class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+
+    <main id="main-container">
+        <!-- Hero -->
+        <div class="bg-body-light">
+            <div class="content content-full">
+                <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
+                    <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Add MCQ</h1>
+                    <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">Forms</li>
+                            <li class="breadcrumb-item active" aria-current="page">Add MCQ</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- END Hero -->
+
+        <!-- Page Content -->
+        <div class="content">
+            <div class="block block-rounded">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">Add MCQ</h3>
+                </div>
+                <div class="block-content">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row push">
+                            <div class="col-lg-8 col-xl-5">
+                                <!-- Regular Fields -->
+                                {% for field in form %}
+                                    {% if field.name not in "options,correct_answers,is_multiselect" %}
+                                        <div class="mb-4">
+                                            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                            {{ field|add_attrs:"class=form-control" }}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+
+                                
+                                <div class="mb-4">
+                                    <div class="form-check form-switch form-check-inline">
+                                        {{ form.is_multiselect|add_attrs:"class=form-check-input" }}
+                                        <label class="form-check-label" for="example-switch-inline1">Is Multiselect</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label" for="options">Options</label>
+                                    <div class="options-container">
+                                        <div class="options-list"></div> <!-- List container -->
+                                        <div class="input-group">
+                                            <input type="text" class="form-control options-input" placeholder="Enter an option">
+                                            <button type="button" class="btn btn-primary" 
+                                                    onclick="addListItem('options-list', 'options-input', 'options')">
+                                                Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Correct Answers Field -->
+                                <div class="mb-4">
+                                    <label class="form-label" for="correct_answers">Correct Options</label>
+                                    <div class="answers-container">
+                                        <div class="answers-list"></div> <!-- Buttons container -->
+                                        <!-- The hidden input field that will hold the correct answers -->
+                                        <input type="hidden" name="correct_answers" value="[]">
+                                    </div>
+                                </div>
+
+                                
+
+                                <button type="submit" class="btn btn-primary ">Add MCQ</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+{% endblock %}
