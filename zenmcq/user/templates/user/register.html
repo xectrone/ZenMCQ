@@ -13,7 +13,7 @@
               <!-- Header -->
               <div class="mb-2 text-center">
                 <a class="link-fx fw-bold fs-1" href="{% url 'home' %}">
-                  <span class="text-dark">Dash</span><span class="text-primary">mix</span>
+                  <span class="text-dark">Zen</span><span class="text-primary">MCQ</span>
                 </a>
                 <p class="text-uppercase fw-bold fs-sm text-muted">Create New Account</p>
               </div>
@@ -69,7 +69,7 @@
                       {{ form.password2.errors }}
                 </div>
 
-                <div class="d-sm-flex justify-content-sm-between align-items-sm-center mb-4 bg-body rounded py-2 px-3">
+                <div class="d-sm-flex justify-content-sm-between align-items-sm-center mb-4 ">
                   <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="signup-terms" name="signup-terms">
                     <label class="form-check-label" for="signup-terms">I agree</label>
@@ -82,6 +82,13 @@
                   <button type="submit" class="btn btn-hero btn-primary">
                     <i class="fa fa-fw fa-plus opacity-50 me-1"></i> Sign Up
                   </button>
+                </div>
+
+                <div class="d-sm-flex justify-content-center align-items-sm-center mb-4 ">
+                  <div>
+                    <label>Have an account?</label>
+                    <a class="fw-semibold fs-sm" href="{% url 'login' %}">Log In</a>
+                  </div>
                 </div>
               </form>
               <!-- END Sign Up Form -->

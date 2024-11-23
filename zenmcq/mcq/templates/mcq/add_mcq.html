@@ -25,46 +25,47 @@
         <!-- Page Content -->
         <div class="content">
             <div class="block block-rounded">
-                <div class="block-header block-header-default">
-                    <h3 class="block-title">Add MCQ</h3>
-                </div>
-                <div class="block-content">
-                    <form method="POST">
-                        {% csrf_token %}
+                <form method="POST">
+                {% csrf_token %}
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">Add MCQ</h3>
+                    </div>
+                    <div class="block-content">
                         <div class="row push">
                             <div class="col-lg-8 col-xl-5">
                                 <!-- Regular Fields -->
                                 {% for field in form %}
-                                    {% if field.name not in "options,correct_answers,is_multiselect" %}
-                                        <div class="mb-4">
-                                            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                                            {{ field|add_attrs:"class=form-control" }}
-                                        </div>
-                                    {% endif %}
+                                {% if field.name not in "options,correct_answers,is_multiselect" %}
+                                <div class="mb-4">
+                                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    {{ field|add_attrs:"class=form-control" }}
+                                </div>
+                                {% endif %}
                                 {% endfor %}
 
-                                
                                 <div class="mb-4">
                                     <div class="form-check form-switch form-check-inline">
                                         {{ form.is_multiselect|add_attrs:"class=form-check-input" }}
-                                        <label class="form-check-label" for="example-switch-inline1">Is Multiselect</label>
+                                        <label class="form-check-label" for="example-switch-inline1">Is
+                                            Multiselect</label>
                                     </div>
                                 </div>
-                                
+
                                 <div class="mb-4">
                                     <label class="form-label" for="options">Options</label>
                                     <div class="options-container">
                                         <div class="options-list"></div> <!-- List container -->
                                         <div class="input-group">
-                                            <input type="text" class="form-control options-input" placeholder="Enter an option">
-                                            <button type="button" class="btn btn-primary" 
-                                                    onclick="addListItem('options-list', 'options-input', 'options')">
+                                            <input type="text" class="form-control options-input"
+                                                placeholder="Enter an option">
+                                            <button type="button" class="btn btn-primary"
+                                                onclick="addListItem('options-list', 'options-input', 'options')">
                                                 Add
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Correct Answers Field -->
                                 <div class="mb-4">
                                     <label class="form-label" for="correct_answers">Correct Options</label>
@@ -74,15 +75,19 @@
                                         <input type="hidden" name="correct_answers" value="[]">
                                     </div>
                                 </div>
-
-                                
-
-                                <button type="submit" class="btn btn-primary ">Add MCQ</button>
                             </div>
                         </div>
-                    </form>
-
-                </div>
+                    </div>
+                    <div class="block-content bg-body-light">
+                        <div class="row justify-content-center push">
+                            <div class="col-md-10">
+                                <button type="submit" class="btn btn-alt-primary">
+                                    <i class="fa fa-fw fa-check opacity-50 me-1"></i> Add MCQ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </main>

@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.template.loader import get_template
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
-
+@login_required
 def home_view(request):
-    template = get_template('base.html') 
-    return render(request, 'website/home.html')
+    return render(request, 'website/home.html', {'user': request.user})
+
